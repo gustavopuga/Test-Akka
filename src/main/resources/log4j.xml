@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE log4j:configuration SYSTEM "file:/log4j/src/java/org/apache/log4j/xml/log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+	<!-- Log Console -->
+	<appender name="Console" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%-5p] (%F:%L) (%d) - %m%n" />
+		</layout>
+	</appender>
+
+	<!-- Log File -->
+	<appender name="File" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="file" value="test_akka.log" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%-5p] (%F:%L) (%d) - %m%n" />
+		</layout>
+	</appender>
+
+	<root>
+		<priority value="all" />
+		<appender-ref ref="File" />
+		<appender-ref ref="Console" />
+	</root>
+
+</log4j:configuration>
