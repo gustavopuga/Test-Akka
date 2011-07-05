@@ -2,3 +2,4 @@
 .project
 .settings/
 target/
+src/main/webapps/WEB-INF/classes
