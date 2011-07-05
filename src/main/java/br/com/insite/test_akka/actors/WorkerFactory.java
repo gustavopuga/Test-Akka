@@ -17,14 +17,14 @@ public class WorkerFactory implements UntypedActorFactory {
 	}
 
 	public Actor create() {
-		return new WorkRouter(workers);
+		return new WorkBalancingRouter(workers);
 	}
 
-	static class WorkRouter extends UntypedLoadBalancer {
+	static class WorkBalancingRouter extends UntypedLoadBalancer {
 
 		private final InfiniteIterator<ActorRef> workers;
 
-		public WorkRouter(ActorRef[] workers) {
+		public WorkBalancingRouter(ActorRef[] workers) {
 			this.workers = new CyclicIterator<ActorRef>(asList(workers));
 		}
 
